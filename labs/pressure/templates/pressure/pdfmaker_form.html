@@ -1,0 +1,15 @@
+{% extends 'pressure/base.html' %}
+{% load crispy_forms_tags %}
+{% block name %}
+<title>PDFMaker create</title>
+{% endblock %}
+{% block title %}
+<h1 class="mt-2">PDFMAKER</h1>
+{% endblock title %}
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form| crispy }}
+    <button type="submit" class="btn btn-success">Make PDF</button>
+  </form>
+{% endblock content%}

@@ -1,0 +1,20 @@
+{% extends 'pressure/base.html' %}
+{% block name %}
+<title>PDFMaker list</title>
+{% endblock %}
+{% block title %}
+<h1 class="mt-2">PDFMAKER</h1>
+{% endblock title %}
+
+{% block content %}
+  <a href="{% url 'atmosphere_pressure_list' %}" class='btn btn-success'>Back to MainPage</a>
+  <a href="{% url 'pdf_create' %}" class='btn btn-danger'>PDF Create</a>
+  {% for pdfmaker in pdfmaker_list %}
+    <div class="otakoi">
+      <ul class="list-group">
+        <a href="{{ pdfmaker.get_absolute_url }}" class="list-group-item">{{ pdfmaker.name }}</a>
+        <li class="list-group-item">{{ pdfmaker.email}}</li>
+      </ul>
+    </div>
+  {% endfor %}
+{% endblock content%}

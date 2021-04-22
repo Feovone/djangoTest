@@ -1,0 +1,25 @@
+{% extends 'pressure/base.html' %}
+{% block name %}
+<title>AtmospherePressure list</title>
+{% endblock %}
+{% block content %}
+<a href="{% url 'atmosphere_pressure_create' %}" class='btn btn-success'>Form Create</a>
+<a href="{% url 'pdf_list' %}"class='btn btn-secondary'>PDF_LIST</a>
+{% if user.is_authenticated %}
+      <p>Logged as {{ user.username }}</p>
+      <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+    {% else %}
+      <a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">
+        Login with Google
+      </a>
+    {% endif %}
+  {% for atmospherepressure in atmospherepressure_list %}
+    <div class="otakoi">
+      <ul class="list-group">
+        <a href="{{ atmospherepressure.get_absolute_url }}" class="list-group-item">{{ atmospherepressure.sensor_name }}</a>
+        <li class="list-group-item">{{ atmospherepressure.sensor_model}}</li>
+        <li class="list-group-item">{{ atmospherepressure.sensor_location }}</li>
+      </ul>
+    </div>
+  {% endfor %}
+{% endblock content%}

@@ -1,0 +1,18 @@
+{% extends 'pressure/base.html' %}
+{% block name %}
+<title>AtmospherePressure detail</title>
+{% endblock %}
+{% block content %}
+<div class="otakoi">
+  <ul class="list-group">
+    <li class="list-group-item active">{{ atmospherepressure.sensor_location }}</li>
+    <li class="list-group-item">{{ atmospherepressure.date}}</li>
+    <li class="list-group-item">{{ atmospherepressure.time }}</li>
+    <li class="list-group-item">{{ atmospherepressure.temperature}}</li>
+    <li class="list-group-item">{{ atmospherepressure.sensor_name }}</li>
+    <li class="list-group-item">{{ atmospherepressure.sensor_model }}</li>
+    <li class="list-group-item">{{ atmospherepressure.url}}</li>
+    <a href="{% url 'atmosphere_pressure_download' atmospherepressure.pk %}" class='btn btn-secondary'>Export</a>
+  </ul>
+</div>
+{% endblock content%}
